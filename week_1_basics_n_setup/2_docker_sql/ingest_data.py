@@ -13,19 +13,15 @@ from sqlalchemy import create_engine
 def main(params):
     user = params.user
     password = params.password
-    host = params.host 
-    port = params.port 
+    host = params.host
+    port = params.port
     db = params.db
     table_name = params.table_name
     url = params.url
-    
+
     # the backup files are gzipped, and it's important to keep the correct extension
     # for pandas to be able to open the file
-    if url.endswith('.csv.gz'):
-        csv_name = 'output.csv.gz'
-    else:
-        csv_name = 'output.csv'
-
+    csv_name = 'output.csv.gz' if url.endswith('.csv.gz') else 'output.csv'
     os.system(f"wget {url} -O {csv_name}")
 
     engine = create_engine(f'postgresql://{user}:{password}@{host}:{port}/{db}')
@@ -46,7 +42,7 @@ def main(params):
 
         try:
             t_start = time()
-            
+
             df = next(df_iter)
 
             df.tpep_pickup_datetime = pd.to_datetime(df.tpep_pickup_datetime)

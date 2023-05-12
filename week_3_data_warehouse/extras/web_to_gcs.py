@@ -37,7 +37,7 @@ def web_to_gcs(year, service):
     for i in range(12):
         
         # sets the month part of the file_name string
-        month = '0'+str(i+1)
+        month = f'0{str(i + 1)}'
         month = month[-2:]
 
         # csv file_name 

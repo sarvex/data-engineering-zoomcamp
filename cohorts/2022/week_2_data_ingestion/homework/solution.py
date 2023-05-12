@@ -165,8 +165,8 @@ donwload_parquetize_upload_dag(
 # https://s3.amazonaws.com/nyc-tlc/misc/taxi+_zone_lookup.csv
 
 ZONES_URL_TEMPLATE = 'https://s3.amazonaws.com/nyc-tlc/misc/taxi+_zone_lookup.csv'
-ZONES_CSV_FILE_TEMPLATE = AIRFLOW_HOME + '/taxi_zone_lookup.csv'
-ZONES_PARQUET_FILE_TEMPLATE = AIRFLOW_HOME + '/taxi_zone_lookup.parquet'
+ZONES_CSV_FILE_TEMPLATE = f'{AIRFLOW_HOME}/taxi_zone_lookup.csv'
+ZONES_PARQUET_FILE_TEMPLATE = f'{AIRFLOW_HOME}/taxi_zone_lookup.parquet'
 ZONES_GCS_PATH_TEMPLATE = "raw/taxi_zone/taxi_zone_lookup.parquet"
 
 zones_data_dag = DAG(
